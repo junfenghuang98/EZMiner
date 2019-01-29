@@ -1,0 +1,58 @@
+
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="bootinfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="firewall" maxOccurs="1" minOccurs="0" />
+        <xs:element type="xs:string" name="account_manager_key" maxOccurs="1" minOccurs="0" />
+        <xs:element name="proxy" maxOccurs="1" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="IP" name="ip" />
+              <xs:element type="xs:int" name="port" />
+              <xs:element name="username" type="xs:string"
+                maxOccurs="1" minOccurs="0">
+              </xs:element>
+              <xs:element name="password" type="xs:string" maxOccurs="1" minOccurs="0"></xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="client" maxOccurs="unbounded" minOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="username"/>
+              <xs:element type="xs:string" name="password" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="script_name"/>
+              <xs:element type="xs:string" name="command" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="pin" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="skill" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:string" name="break_profile" maxOccurs="1" minOccurs="0"/>
+              <xs:element type="xs:int" name="world" maxOccurs="1" minOccurs="0"/>
+              <xs:element name="proxy" maxOccurs="1" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                  	<xs:element type="IP" name="ip" />
+                  	<xs:element type="xs:int" name="port" />
+                  	<xs:element name="username" type="xs:string"
+                  		maxOccurs="1" minOccurs="0">
+                  	</xs:element>
+                  	<xs:element name="password" type="xs:string" maxOccurs="1" minOccurs="0"></xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:simpleType  name="IP">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([0-9]*\.){3}[0-9]*" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+
